@@ -10,6 +10,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
@@ -18,6 +19,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const navbar = useRef();
+  const router = useRouter(); // Initialize the router
 
   useEffect(() => {
     window.onscroll = () => {
@@ -30,6 +32,11 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleHomeClick = () => {
+    setSelectedItem("home");
+    router.push("/"); // Navigate to the main page
+  };
+
   return (
     <div
       ref={navbar}
@@ -37,17 +44,17 @@ const Navbar = () => {
         theme === "dark" ? "bg-[#121212]" : "bg-white text-black"
       } w-full z-50 fixed top-0 left-0 py-4 mb-10`}
     >
-     <div className="container px-5 md:px-16 flex items-center justify-between mx-auto">
-  <Link href={"/"} passHref className="flex items-center gap-3">
-    <img
-      src="/Image1.png" 
-      alt="Sukh Sagar Logo"
-      className="w-20 h-20" 
-    />
-    <h2 className="text-3xl">
-      <span className="text-rose-600">SUKH SAGAR </span>Industries
-    </h2>
-  </Link>
+      <div className="container px-5 md:px-16 flex items-center justify-between mx-auto">
+        <Link href={"/"} passHref className="flex items-center gap-3">
+          <img
+            src="/Image1.png"
+            alt="Sukh Sagar Logo"
+            className="w-20 h-20"
+          />
+          <h2 className="text-3xl">
+            <span className="text-rose-600">SUKH SAGAR </span>Industries
+          </h2>
+        </Link>
         <div>
           <ul
             className={`${toggleMenu === true ? "left-0" : "-left-full"} ${
@@ -65,7 +72,7 @@ const Navbar = () => {
               <CloseOutlinedIcon />
             </button>
             {[
-              { name: "home", path: "#home" },
+              { name: "home", action: handleHomeClick }, 
               { name: "features", path: "#features" },
               { name: "Certifications", path: "/certificates" },
               { name: "Contact", path: "/contact" },
@@ -75,11 +82,17 @@ const Navbar = () => {
                 className={`${
                   selectedItem === link.name ? "text-rose-600" : ""
                 } capitalize border-b py-4 md:border-none md:py-0 hover:text-rose-600`}
-                onClick={() => setSelectedItem(link.name)}
+                onClick={() =>
+                  link.action ? link.action() : setSelectedItem(link.name)
+                }
               >
-                <Link href={link.path} passHref>
-                  {link.name}
-                </Link>
+                {link.path ? (
+                  <Link href={link.path} passHref>
+                    {link.name}
+                  </Link>
+                ) : (
+                  <span className="cursor-pointer">{link.name}</span>
+                )}
               </li>
             ))}
             <div className="md:hidden mx-auto absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-3">
@@ -91,11 +104,11 @@ const Navbar = () => {
               </Link>
               <Link
                 target="_blank"
-                href={"https://www.linkedin.com/in/naseem-khan-275275258/"}
+                href={""}
               >
                 <LinkedInIcon className="cursor-pointer hover:text-rose-600 text-xl" />
               </Link>
-              <Link target="_blank" href={"https://github.com/NaseemKhan005/"}>
+              <Link target="_blank" href={""}>
                 <GitHubIcon className="cursor-pointer hover:text-rose-600 text-xl" />
               </Link>
               <Link
