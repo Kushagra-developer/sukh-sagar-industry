@@ -21,7 +21,7 @@ const Team = () => {
 
         <div className="mt-4 flex space-x-4 justify-center">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/profile.php?id=61569951479357"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-800"
@@ -29,7 +29,7 @@ const Team = () => {
             <FaFacebook size={24} />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/sukhsagarindustries/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-pink-600 hover:text-pink-800"
