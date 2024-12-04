@@ -69,6 +69,7 @@ const Navbar = () => {
             </button>
             {[
               { name: "home", action: handleHomeClick },
+              { name: "about", path: "/Founder" },
               { name: "features", path: "#features" },
               { name: "certifications", path: "/certificates" },
               { name: "contact", path: "/contact" },
