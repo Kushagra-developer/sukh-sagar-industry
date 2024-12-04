@@ -4,7 +4,6 @@ import Features from "@/components/Features";
 import HeroSection from "@/components/HeroSection";
 import Customer from "@/components/Customer";
 import Services from "@/components/Services";
-import Team from "@/components/Team";
 import Work from "@/components/Work";
 
 export default function Home() {
@@ -14,10 +13,6 @@ export default function Home() {
       <Features />
       <Services />
       <CoreFeatures />
-      <Team />
-      <br/>
-      <br/>
-      <br/>
       <br/>
       <Customer />
       <Work />
