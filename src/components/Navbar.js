@@ -71,8 +71,10 @@ const Navbar = () => {
               { name: "home", action: handleHomeClick },
               { name: "about", path: "/Founder" },
               { name: "features", path: "#features" },
+              { name: "contact", path: "/products" },
               { name: "certifications", path: "/certificates" },
               { name: "contact", path: "/contact" },
+              
             ].map((link) => (
               <li
                 key={link.name}
@@ -93,16 +95,10 @@ const Navbar = () => {
               </li>
             ))}
             <div className="md:hidden flex justify-center gap-4 mt-4">
-              <Link href="https://facebook.com" target="_blank">
+              <Link href="https://www.facebook.com/profile.php?id=61569951479357" target="_blank">
                 <FacebookOutlinedIcon className="text-xl hover:text-rose-600" />
               </Link>
-              <Link href="https://linkedin.com" target="_blank">
-                <LinkedInIcon className="text-xl hover:text-rose-600" />
-              </Link>
-              <Link href="https://github.com" target="_blank">
-                <GitHubIcon className="text-xl hover:text-rose-600" />
-              </Link>
-              <Link href="https://instagram.com" target="_blank">
+              <Link href="https://www.instagram.com/sukhsagarindustries/" target="_blank">
                 <InstagramIcon className="text-xl hover:text-rose-600" />
               </Link>
             </div>
@@ -110,11 +106,6 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="capitalize text-sm sm:text-base border-2 font-semibold px-4 py-2 text-rose-600 border-rose-600 hover:bg-rose-600 hover:text-white rounded-full">
-            <Link href="/products" passHref>
-              Products
-            </Link>
-          </button>
           <button>
             {theme === "dark" ? (
               <LightModeRoundedIcon
