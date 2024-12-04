@@ -9,7 +9,7 @@ const Team = () => {
       </h2>
 
       <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 sm:gap-8 mt-16 relative">
-        <div className="absolute left-[450px] top-0 flex flex-col items-center justify-center">
+        <div className="absolute left-[475px] top-0 flex flex-col items-center justify-center">
           {/* Team Card */}
           <img
             src="/team/img-1.jpeg"
