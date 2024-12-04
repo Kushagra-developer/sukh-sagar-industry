@@ -10,7 +10,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation"; 
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
@@ -19,11 +19,11 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const navbar = useRef();
-  const router = useRouter(); // Initialize the router
+  const router = useRouter(); 
 
   useEffect(() => {
+    setMounted(true);
     window.onscroll = () => {
-      setMounted(true);
       if (window.pageYOffset >= 200) {
         navbar.current.classList.add("shadow");
       } else {
@@ -34,7 +34,7 @@ const Navbar = () => {
 
   const handleHomeClick = () => {
     setSelectedItem("home");
-    router.push("/"); // Navigate to the main page
+    router.push("/"); 
   };
 
   return (
@@ -42,46 +42,42 @@ const Navbar = () => {
       ref={navbar}
       className={`${
         theme === "dark" ? "bg-[#121212]" : "bg-white text-black"
-      } w-full z-50 fixed top-0 left-0 py-4 mb-10`}
+      } w-full z-50 fixed top-0 left-0 py-4`}
     >
       <div className="container px-5 md:px-16 flex items-center justify-between mx-auto">
         <Link href={"/"} passHref className="flex items-center gap-3">
-          <img
-            src="/Image1.png"
-            alt="Sukh Sagar Logo"
-            className="w-20 h-20"
-          />
-          <h2 className="text-3xl">
+          <img src="/Image1.png" alt="Logo" className="w-20 h-20" />
+          <h2 className="text-xl sm:text-3xl font-bold">
             <span className="text-rose-600">SUKH SAGAR </span>Industries
           </h2>
         </Link>
         <div>
           <ul
-            className={`${toggleMenu === true ? "left-0" : "-left-full"} ${
+            className={`${toggleMenu ? "left-0" : "-left-full"} ${
               theme === "dark"
                 ? "bg-[#121212] text-white"
                 : "bg-white text-black"
-            } z-50 flex md:items-center gap-1 md:gap-5 lg:gap-10 md:relative absolute top-0 md:left-0 w-80 transition-all duration-500 h-screen md:w-auto md:h-auto flex-col md:flex-row shadow-2xl py-24 px-10 md:p-0 md:shadow-none`}
+            } fixed top-0 z-50 w-4/5 h-full overflow-y-auto transition-all duration-500 p-8 flex flex-col gap-6 shadow-lg md:static md:flex md:flex-row md:items-center md:justify-end md:w-auto md:h-auto md:p-0 md:shadow-none`}
           >
             <button
               className={`${
                 theme === "dark" ? "text-white" : "text-black"
-              } md:hidden absolute top-6 right-5`}
+              } md:hidden absolute top-4 right-5`}
               onClick={() => setToggleMenu(false)}
             >
               <CloseOutlinedIcon />
             </button>
             {[
-              { name: "home", action: handleHomeClick }, 
+              { name: "home", action: handleHomeClick },
               { name: "features", path: "#features" },
-              { name: "Certifications", path: "/certificates" },
-              { name: "Contact", path: "/contact" },
+              { name: "certifications", path: "/certificates" },
+              { name: "contact", path: "/contact" },
             ].map((link) => (
               <li
                 key={link.name}
                 className={`${
                   selectedItem === link.name ? "text-rose-600" : ""
-                } capitalize border-b py-4 md:border-none md:py-0 hover:text-rose-600`}
+                } capitalize py-2 border-b border-neutral-300 md:border-none hover:text-rose-600`}
                 onClick={() =>
                   link.action ? link.action() : setSelectedItem(link.name)
                 }
@@ -95,34 +91,25 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            <div className="md:hidden mx-auto absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-3">
-              <Link
-                href="https://www.facebook.com/profile.php?id=100017192357822&sk"
-                target="_blank"
-              >
-                <FacebookOutlinedIcon className="cursor-pointer hover:text-rose-600 text-xl" />
+            <div className="md:hidden flex justify-center gap-4 mt-4">
+              <Link href="https://facebook.com" target="_blank">
+                <FacebookOutlinedIcon className="text-xl hover:text-rose-600" />
               </Link>
-              <Link
-                target="_blank"
-                href={""}
-              >
-                <LinkedInIcon className="cursor-pointer hover:text-rose-600 text-xl" />
+              <Link href="https://linkedin.com" target="_blank">
+                <LinkedInIcon className="text-xl hover:text-rose-600" />
               </Link>
-              <Link target="_blank" href={""}>
-                <GitHubIcon className="cursor-pointer hover:text-rose-600 text-xl" />
+              <Link href="https://github.com" target="_blank">
+                <GitHubIcon className="text-xl hover:text-rose-600" />
               </Link>
-              <Link
-                target="_blank"
-                href={"https://www.instagram.com/sukhsagarindustries/"}
-              >
-                <InstagramIcon className="cursor-pointer hover:text-rose-600 text-xl" />
+              <Link href="https://instagram.com" target="_blank">
+                <InstagramIcon className="text-xl hover:text-rose-600" />
               </Link>
             </div>
           </ul>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-4 md:gap-2 lg:gap-4">
-          <button className="capitalize text-sm sm:text-base border-2 hover:border-2 font-semibold sm:py-3 py-2 px-3 sm:px-6 text-rose-600 border-rose-600 hover:border-rose-600 hover:bg-rose-600 hover:text-white rounded-full">
+        <div className="flex items-center gap-3">
+          <button className="capitalize text-sm sm:text-base border-2 font-semibold px-4 py-2 text-rose-600 border-rose-600 hover:bg-rose-600 hover:text-white rounded-full">
             <Link href="/products" passHref>
               Products
             </Link>
