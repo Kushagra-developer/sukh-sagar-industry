@@ -3,8 +3,10 @@
 import React from "react";
 
 const certificates = [
+    
+   
   {
-    title: "ICV Certificate",
+    title: "ISO 9001:2015",
     link: "./SUKH SAGAR INDUSTRIES FINAL REWISE.pdf",
   },
   {
@@ -21,6 +23,9 @@ const CertificatePage = () => {
   return (
     <section className="container mx-auto px-5 md:px-16 py-10 flex flex-col gap-10" id="certificates">
       <div>
+      < br/>
+     < br/>
+     < br/>
         <h2 className="text-center text-2xl font-bold text-rose-600">Certificates</h2>
         <p className="text-center mt-2 text-gray-700 dark:text-gray-300">
           View and download our official certificates below.
@@ -46,6 +51,15 @@ const CertificatePage = () => {
           </div>
         ))}
       </div>
+     < br/>
+     < br/>
+     < br/>
+     < br/>
+     < br/>
+     < br/>
+     < br/>
+     < br/>
+   
     </section>
   );
 };
